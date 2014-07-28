@@ -6,7 +6,7 @@
 """The GSync Drive module that provides an interface to the Google Drive"""
 
 import os, sys, re, datetime, shelve, time, retrying
-
+from dateutil.tz import tzutc
 from contextlib import contextmanager
 
 # Setup default retryer.
@@ -64,7 +64,8 @@ class DriveFileObject(object):
         # Public
         self.closed = False
         self.description = ""
-        self.modified_date = datetime.datetime.now().isoformat()
+        self.modified_date = datetime.datetime.now().replace(
+            tzinfo=tzutc()).isoformat()
 
         # Private
         drive = Drive()
