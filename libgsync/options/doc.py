@@ -90,6 +90,8 @@ Options:
      --contimeout=SECONDS    set daemon connection timeout in seconds
  -I, --ignore-times          don't skip files that match in size and mod-time
      --size-only             skip files that match in size
+     --ignore-size           ignore size and use modtime only. Must be used for transparent 
+                             encryption.
      --modify-window=NUM     compare mod-times with reduced accuracy
  -T, --temp-dir=DIR          create temporary files in directory DIR
  -y, --fuzzy                 find similar file for basis if no dest file
