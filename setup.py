@@ -40,6 +40,7 @@ setup(
         'python-magic >= 0.4.6',
         'retrying >= 1.1.0',
         'urllib3 >= 1.5',
+        'pycrypto >= 2.6.1',
     ],
     packages = [
         'libgsync',
@@ -49,6 +50,7 @@ setup(
         'libgsync.sync.file',
         'libgsync.sync.file.local',
         'libgsync.sync.file.remote',
+        'libgsync.crypt',
     ],
     scripts = [
         'bin/gsync',
