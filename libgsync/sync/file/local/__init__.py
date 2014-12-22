@@ -14,6 +14,9 @@ from libgsync.sync.file import SyncFile, SyncFileInfo
 from libgsync.options import GsyncOptions
 from apiclient.http import MediaFileUpload, MediaUploadProgress
 
+from libgsync.crypt import *
+import tempfile
+
 
 class SyncFileLocal(SyncFile):
     """SyncFileLocal class for representing local files"""
@@ -30,6 +33,14 @@ class SyncFileLocal(SyncFile):
 
         # Test the file is readable.
         open(path, "r").close()
+
+#        #Encryption would happen here...
+#        t = TransparentCrypt()
+#        temp = tempfile.NamedTemporaryFile()
+#        plain_file = path
+#        path = temp.name
+#        t.encrypt_file(plain_file, path, "asdf")
+
 
         return MediaFileUpload(
             path, mimetype = info.mimeType, resumable = True
