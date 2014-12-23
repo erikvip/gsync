@@ -18,6 +18,9 @@ from dateutil.tz import tzutc
 from libgsync.crypt import *
 import tempfile
 
+from libgsync.crypt import *
+import tempfile
+
 
 class SyncFileLocal(SyncFile):
     """SyncFileLocal class for representing local files"""
