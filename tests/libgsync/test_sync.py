@@ -11,6 +11,7 @@ try: import posix as os_platform
 except ImportError: import nt as os_platform
 
 def sha256sum(path):
+    print path
     blocksize = 65536
     sha = hashlib.new("sha256")
     with open(path, "r+b") as f:

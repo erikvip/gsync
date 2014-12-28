@@ -44,8 +44,10 @@ class SyncFileLocal(SyncFile):
 #        plain_file = path
 #        path = temp.name
 #        t.encrypt_file(plain_file, path, "asdf")
-
-
+        
+        print "Encrypt ", path
+        #import pdb; pdb.set_trace()
+        
         return MediaFileUpload(
             path, mimetype = info.mimeType, resumable = True
         )

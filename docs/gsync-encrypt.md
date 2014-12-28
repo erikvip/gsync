@@ -1,6 +1,54 @@
 GSync Transparent Encryption Notes
 ==================================
 
+
+
+
+
+
+Backtrace to get uploader
+--------------------------
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/file/local/__init__.py(51)get_uploader()
+    -> return MediaFileUpload(
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/file/remote/__init__.py(152)_update_data()
+    -> path, info, media_body=src.get_uploader(),
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/file/__init__.py(353)__create_file()
+    -> self._update_data(path, src)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/file/__init__.py(453)create()
+    -> self.__create_file(path, src_obj)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/__init__.py(315)_sync()
+    -> self.dst.create(dst_path, src_file)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/sync/__init__.py(263)__call__()
+    -> self._sync(path)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/crawler.py(163)_walk()
+    -> self._sync(absfile)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/libgsync/crawler.py(193)run()
+    -> self._walk(srcpath, self._walk_callback, self._dev)
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/EGG-INFO/scripts/gsync(82)main()
+    -> Crawler(src, dest).run()
+    (Pdb) u
+    > /usr/lib/python2.7/site-packages/gsync-0.1.14-py2.7.egg/EGG-INFO/scripts/gsync(94)<module>()
+    -> sys.exit(main())
+
+
+
+
+
+
+
+
+
+
+
+
 gsync changes:
 libgsync/options/doc.py
 +     --ignore-size           ignore size and use modtime only. Must be used for transparent encryption.
@@ -17,8 +65,8 @@ libgsync/sync/__init__.py
 +from libgsync.crypt import *
 +import tempfile
 
-
-+        #Encryption would happen here...
+Encryption
++        # would happen here...
 +        t = TransparentCrypt()
 +        temp = tempfile.NamedTemporaryFile()
 +        plain_file = path
